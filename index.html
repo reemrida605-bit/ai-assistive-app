@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Assistive App</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- Language Selection -->
+
+    <div
+        id="languageScreen"
+        class="language-screen"
+    >
+
+        <div class="language-box">
+
+            <h1>
+                Choose Language
+            </h1>
+
+            <p>
+                Select your preferred language
+            </p>
+
+            <button
+                class="language-btn"
+                data-language="en"
+                type="button"
+            >
+                English
+            </button>
+
+            <button
+                class="language-btn"
+                data-language="ar"
+                type="button"
+            >
+                العربية
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Main Application -->
+
+    <div
+        class="mobile-frame"
+        id="app"
+    >
+
+        <header class="app-header">
+
+            <h2 data-i18n="appTitle">
+                AI Assistive App
+            </h2>
+
+        </header>
+
+
+        <main class="home-grid">
+
+            <!-- Object Detection -->
+
+            <a
+                href="object-detection.html"
+                class="menu-card primary"
+                id="objectDetectionBtn"
+            >
+
+                <div class="card-icon">
+
+                    <i class="bi bi-bounding-box-circles"></i>
+
+                </div>
+
+                <span data-i18n="objectDetection">
+                    Object<br>Detection
+                </span>
+
+            </a>
+
+
+            <!-- Read Text -->
+
+            <a
+                href="#"
+                class="menu-card primary"
+                id="readTextBtn"
+            >
+
+                <div class="card-icon">
+
+                    <i class="bi bi-file-earmark-text"></i>
+
+                </div>
+
+                <span data-i18n="readText">
+                    Read Text
+                </span>
+
+            </a>
+
+
+            <!-- Scene Description -->
+
+            <a
+                href="#"
+                class="menu-card primary"
+                id="sceneBtn"
+            >
+
+                <div class="card-icon">
+
+                    <i class="bi bi-house-door"></i>
+
+                </div>
+
+                <span data-i18n="sceneDescription">
+                    Scene<br>Description
+                </span>
+
+            </a>
+
+
+            <!-- Navigation Assist -->
+
+            <a
+                href="#"
+                class="menu-card primary"
+                id="navBtn"
+            >
+
+                <div class="card-icon">
+
+                    <i class="bi bi-key"></i>
+
+                </div>
+
+                <span data-i18n="navigationAssist">
+                    Navigation<br>Assist
+                </span>
+
+            </a>
+
+        </main>
+
+
+        <!-- Voice Control Status -->
+
+        <footer
+            class="voice-bar"
+            id="voiceCommandBar"
+        >
+
+            <i class="bi bi-mic-fill voice-icon"></i>
+
+            <span data-i18n="voiceCommand">
+                Voice Command
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection – AI Assistive App</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    >
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="mobile-frame">
+
+        <header class="app-header">
+            <h2 data-i18n="objectDetectionTitle">Object Detection</h2>
+        </header>
+
+        <main class="detection-view">
+
+            <div class="camera-container">
+                <video
+                    id="webcam"
+                    autoplay
+                    playsinline
+                    muted
+                    aria-label="Live camera feed"
+                ></video>
+
+                <div
+                    class="detection-overlay"
+                    id="resultOverlay"
+                    role="status"
+                    aria-live="polite"
+                    data-i18n="listening"
+                >
+                    Listening…
+                </div>
+            </div>
+
+            <!-- Off-screen canvas used only for frame capture -->
+            <canvas id="captureCanvas" hidden></canvas>
+
+        </main>
+
+        <footer class="voice-status" aria-label="Voice control status">
+            <i class="bi bi-mic-fill" aria-hidden="true"></i>
+            <span data-i18n="voiceStatus">Voice control active</span>
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
