@@ -1,0 +1,246 @@
+/* Screen — fills the real viewport, not a fake phone frame */
+
+.screen {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100dvh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--surface);
+}
+
+.screen--home {
+  background: var(--surface-soft);
+}
+
+/* App header (used only on inner pages that have AppHeader) */
+
+.app-header {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 4px;
+
+  padding: 14px 16px;
+
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+
+  flex-shrink: 0;
+}
+
+.header-title {
+  text-align: center;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.header-alt {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.header-button {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 12px;
+
+  color: var(--text);
+  background: transparent;
+
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.header-button:hover { background: var(--surface-muted); }
+
+.header-spacer { width: 44px; }
+
+/* Home content */
+
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 32px 20px 24px;
+}
+
+/* App brand / title */
+
+.home-brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.home-brand-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-brand-title {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.home-brand-sub {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.home-lang-btn {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 7px 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1.5px solid var(--primary);
+  border-radius: 999px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.home-lang-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.home-lang-btn:active {
+  background: var(--primary-dark);
+  color: #fff;
+  transform: scale(0.94);
+}
+
+/* Voice button — primary interaction */
+
+.home-voice-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.home-support-warn {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  border-radius: 12px;
+  color: #b91c1c;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.home-support-warn p { margin: 0; }
+
+.home-support-btn {
+  align-self: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.home-support-btn:active { transform: scale(0.97); }
+
+.home-voice-btn {
+  position: relative;
+  width: 92px;
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  transition: transform 0.15s ease;
+}
+
+.home-voice-btn:not(:disabled):active { transform: scale(0.93); }
+
+.home-voice-btn:disabled { opacity: 0.5; cursor: default; }
+
+.home-voice-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.25;
+  transition: opacity 0.2s ease;
+}
+
+.home-voice-btn--listening .home-voice-ring {
+  opacity: 1;
+  animation: home-ring-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes home-ring-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.9; }
+  50%       { transform: scale(1.14); opacity: 0.45; }
+}
+
+.home-voice-dot {
+  position: relative;
+  z-index: 1;
+  font-size: 2.4rem;
+  color: var(--primary);
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.home-voice-btn--listening .home-voice-dot  { color: var(--primary-dark); }
+.home-voice-btn--speaking .home-voice-dot   { color: var(--text-muted); }
+.home-voice-btn--unsupported .home-voice-dot { color: var(--text-muted); }
+
+.home-voice-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  min-height: 1.4em;
+}

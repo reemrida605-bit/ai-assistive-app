@@ -154,13 +154,13 @@ export async function analyzeImage({
   language = "en",
   signal,
 }) {
-  if (!hasGroqKey()) {
+  if (!API_KEY) {
     const e = new Error(
       language === "ar"
-        ? "مفتاح Groq غير مُهيأ."
-        : "Groq API key is not configured."
+        ? "مفتاح Gemini غير مُهيأ."
+        : "Gemini API key is not configured."
     );
-    e.code = "NO_GROQ_KEY";
+    e.code = "NO_API_KEY";
     throw e;
   }
 
@@ -172,21 +172,7 @@ export async function analyzeImage({
     throw e;
   }
 
-  if (!navigator.onLine) {
-    const e = new Error("NETWORK_REQUIRED");
-    e.code = "NETWORK_REQUIRED";
-    throw e;
-  }
-
   const base64 = image.includes(",") ? image.split(",")[1] : image;
-
-  return await analyzeImageWithGroq({
-    image: base64,
-    mode,
-    language,
-    signal,
-  });
-
   const prompt = getVisionPrompt(mode, language);
 
   // Build a queue: discovered model first, then full preferred list as fallback.
